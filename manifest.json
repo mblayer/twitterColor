@@ -1,0 +1,24 @@
+{
+  "name": "tweetsColor",
+  "version": "1.0.0",
+  "description": "Cambia el BGcolor de los tweets según usuarios seleccionados",
+  "manifest_version": 2,
+  "permissions": [
+    "http://www.twitter.com/"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "content_scripts": [{
+    "matches": [
+      "*://*.twitter.com/*"
+    ],
+    "js": [
+      "content.js"
+    ]
+  }],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_action":{
+    "default_icon": "icons/logo.png"
+  }
+}
