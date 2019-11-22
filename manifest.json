@@ -4,7 +4,8 @@
   "description": "Cambia el BGcolor de los tweets según usuarios seleccionados",
   "manifest_version": 2,
   "permissions": [
-    "http://www.twitter.com/"
+    "http://www.twitter.com/",
+    "storage"
   ],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "content_scripts": [{
@@ -19,6 +20,9 @@
     "scripts": ["background.js"]
   },
   "browser_action":{
-    "default_icon": "icons/logo.png"
+    "default_title": "Set tweets color.",
+    "default_icon": "icons/logo.png",
+    "default_popup": "popup.html"
+
   }
 }

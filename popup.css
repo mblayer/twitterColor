@@ -1,0 +1,28 @@
+body{
+  padding: 2px 5px;
+  width: 340px;
+  margin: 0;
+}
+ol, ul {
+  color: #ffffff;
+  font-weight: bold;
+  list-style: none;
+  padding: 0px;
+}
+li{
+  display: inline-block;
+  font-size: 14px;
+  padding: 2% 0;
+  text-align: left;
+  width: 50%;
+}
+input[type=text]{
+  font-size: 22px;
+  margin: 1% 0;
+  width: 98%;
+}
+input[type=color]{
+  height: 50px;
+  margin: 1% 0;
+  width: 50px;
+}

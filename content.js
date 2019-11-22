@@ -1,26 +1,26 @@
 const listName = [
   { username: '@M_Blayer', color: '#324a02' }
-]
+];
+chrome.storage.local.get(null,function (obj){
+  if(obj.users){
+    for (const user of obj.users) {
+      listName.push(user);
+    }
+  };
+});
 
 // selecciona y asigna bgcolor segun corresponde.
 const updatedBgColor = () => {
-  const list = document.getElementsByClassName('tweet');
-  for (element of list) {
-    const item = element.childNodes[3] ?
-      element.childNodes[3].getElementsByClassName('username u-dir u-textTruncate')[0].textContent : false;
-    for (user of listName) {
-      user.username.indexOf(item) !== -1 ? element.style.backgroundColor = user.color : '';
+  const list = document.querySelectorAll("div[data-testid=tweet]");
+  for (let element of list) {
+    const item = element.childNodes[1] ?
+        element.childNodes[1]
+          .getElementsByClassName('css-901oao css-16my406 r-1qd0xha r-ad9z0x r-bcqeeo r-qvutc0')[2]
+          .textContent : false;
+    for (let user of listName) {
+      user.username.indexOf(item) !== -1 ? element.parentElement.style.backgroundColor = user.color : '';
     }
   }
-}
+};
 // Reitera la ejecucion de nuestra funcion.
 const intervalId = setInterval(updatedBgColor, 3000);
-
-// Actuamos segun respuesta del navegador.
-const eventMessage = (message, sender, sendResponse)=>{
-  console.log(message);
-  message ? clearInterval(intervalId):'';
-  return message
-}
-// Esperamos una accion desde el navegador
-chrome.runtime.onMessage.addListener(eventMessage);
